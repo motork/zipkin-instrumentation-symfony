@@ -5,7 +5,7 @@ export SYMFONY_VERSION := $(SYMFONY_VERSION)
 export SAMPLER := $(SAMPLER)
 build-docker:
 	#docker build -t symfony-zipkin-test ./php
-	docker-compose build symfony-zipkin-test
+	docker-compose build --no-cache --build-arg SYMFONY_VERSION=$(SYMFONY_VERSION) symfony-zipkin-test
 
 build: ## Builds the symfony app
 	./build.sh $(SYMFONY_VERSION) $(LIBRARY_BRANCH) $(SAMPLER)

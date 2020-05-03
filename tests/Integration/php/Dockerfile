@@ -23,4 +23,4 @@ EXPOSE 8002
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-#CMD ["bin/console", "server:run",  "8002"]
+CMD ["bin/console", "server:run",  "0.0.0.0:8002"]
