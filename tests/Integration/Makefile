@@ -1,6 +1,12 @@
 SYMFONY_VERSION ?= 4.4
 LIBRARY_BRANCH ?= master
 
+export SYMFONY_VERSION := $(SYMFONY_VERSION)
+export SAMPLER := $(SAMPLER)
+build-docker:
+	#docker build -t symfony-zipkin-test ./php
+	docker-compose build symfony-zipkin-test
+
 build: ## Builds the symfony app
 	./build.sh $(SYMFONY_VERSION) $(LIBRARY_BRANCH) $(SAMPLER)
 

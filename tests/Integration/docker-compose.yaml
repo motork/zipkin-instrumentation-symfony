@@ -1,0 +1,18 @@
+version: "3.4"
+
+services:
+  symfony-zipkin-test:
+    build:
+      context: ./php
+      args:
+        - SYMFONY_VERSION
+    volumes:
+    - ./tracing.${SAMPLER}.yaml:/test-app/config/tracing.yaml
+    - ./HealthController.php:./test-app/src/Controller/HealthController.php
+    - ./CustomSampler.php:/test-app/src/Sampler/CustomSampler.php
+    - ../:/.zipkin-instrumentation-symfony
+    - /.zipkin-instrumentation-symfony/vendor
+    - /.zipkin-instrumentation-symfony/tests/integration
+    - /.zipkin-instrumentation-symfony/.circleci
+    environment:
+      - SYMFONY_VERSION: ${SYMFONY_VERSION}
