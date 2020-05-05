@@ -44,7 +44,7 @@ class Zipkin implements MiddlewareInterface
 
     private function handleIncomingMessage(Envelope $envelope, StackInterface $stack)
     {
-        //TODO manage incoming message
+
     }
 
     private function handleSendingMessage(Envelope $envelope, StackInterface $stack)
