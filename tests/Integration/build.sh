@@ -21,6 +21,7 @@ cat composer.json.dist \
 | jq '.scripts["sync"] = ["rsync -arv --exclude=.git --exclude=tests/Integration --exclude=composer.lock --exclude=vendor ../../../. ./.zipkin-instrumentation-symfony"]' \
 | jq '.scripts["pre-install-cmd"] = ["@sync"]' \
 | jq '.scripts["pre-update-cmd"] = ["@sync"]' \
+| jq '.require["symfony/messenger"] = "4.4.*"' \
 | jq '.require["jcchavezs/zipkin-instrumentation-symfony"] = "*"' \
 | jq '.repositories = [{"type": "path","url": "./.zipkin-instrumentation-symfony","options": {"symlink": true}}]' > composer.json
 
